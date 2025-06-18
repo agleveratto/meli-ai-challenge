@@ -1,0 +1,26 @@
+[
+  {
+    "id": "MLA123",
+    "title": "Samsung Galaxy A55",
+    "price": 439.00,
+    "images": [
+      "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a556elbparo/gallery/ar-galaxy-a55-5g-sm-a556-sm-a556elbparo-544072501?$684_547_PNG$"
+    ],
+    "description": "Samsung Galaxy A55 5G Awesome Navy 256 GB",
+    "brand": "Samsung",
+    "seller": "Samsung Store",
+    "category": "Cellphones"
+  },
+  {
+    "id": "MLA124",
+    "title": "Samsung Galaxy A56",
+    "price": 479.00,
+    "images": [
+      "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a566ezkfaro/gallery/ar-galaxy-a56-5g-sm-a566-sm-a566ezkfaro-545609422?$684_547_PNG$"
+    ],
+    "description": "Samsung Galaxy A56 5G Awesome Graphite 256 GB",
+    "brand": "Samsung",
+    "seller": "Samsung Store",
+    "category": "Cellphones"
+  }
+]
