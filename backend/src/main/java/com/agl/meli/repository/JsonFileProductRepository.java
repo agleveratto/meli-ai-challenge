@@ -20,6 +20,11 @@ public class JsonFileProductRepository implements ProductRepository {
     }
 
     @Override
+    public List<Product> findAll() {
+        return products;
+    }
+
+    @Override
     public Optional<Product> findById(String id) {
         return products.stream()
                 .filter(product -> product.getId().equals(id))

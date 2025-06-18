@@ -18,8 +18,19 @@ class JsonFileProductRepositoryTest {
     }
 
     @Test
-    void findById() {
+    void findAll() {
+        assertEquals(2, jsonFileProductRepository.findAll().size());
+    }
+
+    @Test
+    void findById_whenProductNotFound_shouldReturnEmptyOptional() {
         Optional<Product> product = jsonFileProductRepository.findById("1");
         assertTrue(product.isEmpty());
+    }
+
+    @Test
+    void findById_whenProductFound_shouldReturnProduct() {
+        Optional<Product> product = jsonFileProductRepository.findById("MLA123");
+        assertTrue(product.isPresent());
     }
 }

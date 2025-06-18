@@ -5,6 +5,8 @@ import com.agl.meli.model.Product;
 import com.agl.meli.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
 
@@ -12,6 +14,16 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    public List<Product> findAll() {
+        List<Product> products = productRepository.findAll();
+
+        if (products.isEmpty()) {
+            throw new ProductNotFoundException("No products found");
+        }
+
+        return products;
     }
 
     public Product findById(String id) {

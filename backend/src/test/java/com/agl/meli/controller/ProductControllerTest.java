@@ -11,6 +11,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -30,7 +33,36 @@ class ProductControllerTest {
     private static final String GET_PRODUCT_BY_ID_PATH = ROOT_PATH + "/{id}";
 
     @Test
-    void getProductById_givenUnknownId_shouldReturnGenericResponseWithError() throws Exception {
+    void findAll_givenEmptyFile_shouldReturnGenericResponseWithError() throws Exception {
+        when(productService.findAll())
+                .thenThrow(new ProductNotFoundException("Products not found"));
+
+        mockMvc.perform(get(ROOT_PATH))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.data").doesNotExist())
+                .andExpect(jsonPath("$.message").value("Products not found"));
+
+        verify(productService).findAll();
+    }
+
+    @Test
+    void findAll_givenFileWithData_shouldReturnGenericResponseWithData() throws Exception {
+        final String knownId = "MLA123";
+
+        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList());
+
+        when(productService.findAll()).thenReturn(List.of(expectedProduct));
+
+        mockMvc.perform(get(ROOT_PATH))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data").isArray())
+                .andExpect(jsonPath("$.data[0].id").value(knownId));
+
+        verify(productService).findAll();
+    }
+
+    @Test
+    void findById_givenUnknownId_shouldReturnGenericResponseWithError() throws Exception {
         final String unknownId = "1";
 
         when(productService.findById(unknownId))
@@ -45,7 +77,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void getProductById_whenFileNotExist_shouldReturnGenericResponseWithError() throws Exception {
+    void findById_whenFileNotExist_shouldReturnGenericResponseWithError() throws Exception {
         final String unknownId = "1";
 
         when(productService.findById(unknownId))
@@ -60,7 +92,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void getProductById_whenFileHasErrors_shouldReturnGenericResponseWithError() throws Exception {
+    void findById_whenFileHasErrors_shouldReturnGenericResponseWithError() throws Exception {
         final String unknownId = "1";
 
         when(productService.findById(unknownId))
@@ -75,10 +107,10 @@ class ProductControllerTest {
     }
 
     @Test
-    void getProductById_givenKnownId_shouldReturnGenericResponseWithData() throws Exception {
+    void findById_givenKnownId_shouldReturnGenericResponseWithData() throws Exception {
         final String knownId = "MLA123";
 
-        final Product expectedProduct = new Product(knownId,"","","","","",439.00);
+        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList());
 
         when(productService.findById(knownId))
                 .thenReturn(expectedProduct);
