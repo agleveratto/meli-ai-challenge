@@ -1,0 +1,20 @@
+[
+  {
+    "id": "MLA123",
+    "titel": "Samsung Galaxy A55",
+    "description": "Samsung Galaxy A55 12/256 Gb 5G",
+    "brand": "Samsung",
+    "seller": "Samsung Store",
+    "category": "Cellphones",
+    "price": 439.00
+  },
+  {
+    "id": "MLA124",
+    "title": "Samsung Galaxy A56",
+    "description": "Samsung Galaxy A56 12/256 Gb 5G",
+    "brand": "Samsung",
+    "seller": "Samsung Store",
+    "category": "Cellphones",
+    "price": 499.00
+  }
+]
