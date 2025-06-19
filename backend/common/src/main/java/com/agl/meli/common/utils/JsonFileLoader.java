@@ -1,7 +1,7 @@
-package com.agl.meli.product.utils;
+package com.agl.meli.common.utils;
 
-import com.agl.meli.product.exceptions.JsonFileNotFoundException;
-import com.agl.meli.product.exceptions.JsonFileParseException;
+import com.agl.meli.common.exceptions.JsonFileNotFoundException;
+import com.agl.meli.common.exceptions.JsonFileParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
