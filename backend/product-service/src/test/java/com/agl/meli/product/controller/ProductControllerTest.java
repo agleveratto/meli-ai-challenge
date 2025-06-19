@@ -1,7 +1,7 @@
 package com.agl.meli.product.controller;
 
-import com.agl.meli.product.exceptions.JsonFileNotFoundException;
-import com.agl.meli.product.exceptions.JsonFileParseException;
+import com.agl.meli.common.exceptions.JsonFileNotFoundException;
+import com.agl.meli.common.exceptions.JsonFileParseException;
 import com.agl.meli.product.exceptions.ProductNotFoundException;
 import com.agl.meli.product.model.Product;
 import com.agl.meli.product.service.ProductService;

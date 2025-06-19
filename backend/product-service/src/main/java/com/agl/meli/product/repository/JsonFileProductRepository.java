@@ -1,7 +1,7 @@
 package com.agl.meli.product.repository;
 
+import com.agl.meli.common.utils.JsonFileLoader;
 import com.agl.meli.product.model.Product;
-import com.agl.meli.product.utils.JsonFileLoader;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,7 @@
 package com.agl.meli.product.exceptions;
 
+import com.agl.meli.common.exceptions.JsonFileNotFoundException;
+import com.agl.meli.common.exceptions.JsonFileParseException;
 import com.agl.meli.product.dto.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponse.error(ex.getMessage()));
     }
 
-    @ExceptionHandler(JsonFileNotFoundException.class)
+    @ExceptionHandler( JsonFileNotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleJsonFileNotFoundException(JsonFileNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponse.error(ex.getMessage()));
     }
 
-    @ExceptionHandler(JsonFileParseException.class)
+    @ExceptionHandler( JsonFileParseException.class)
     public ResponseEntity<ApiResponse<Void>> handleJsonFileParseException(JsonFileParseException ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ApiResponse.error(ex.getMessage()));
     }
