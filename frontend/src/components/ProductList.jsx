@@ -8,7 +8,7 @@ function ProductList() {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:8080/api/v1/products')
+        fetch('http://localhost:8081/api/v1/products')
             .then((res) => {
                 if (!res.ok) throw new Error('Error al obtener productos');
                 return res.json();
