@@ -6,7 +6,7 @@ import ProductInfo from "./ProductInfo.jsx";
 
 function ProductDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
