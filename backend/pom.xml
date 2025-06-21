@@ -13,6 +13,7 @@
     <modules>
         <module>common</module>
         <module>product-service</module>
+        <module>seller-service</module>
     </modules>
 
     <dependencyManagement>
