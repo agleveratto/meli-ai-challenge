@@ -1,4 +1,4 @@
-package com.agl.meli.product.dto;
+package com.agl.meli.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

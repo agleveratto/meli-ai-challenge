@@ -27,7 +27,7 @@ class StartupIntegrationTest {
 
     @Test
     void healthEndpointShouldReturnOk() {
-        ResponseEntity <String> response = restTemplate.getForEntity("/api/v1/products", String.class);
+        ResponseEntity <String> response = restTemplate.getForEntity("/api/v1/sellers", String.class);
         assertEquals( HttpStatus.OK, response.getStatusCode());
     }
 }

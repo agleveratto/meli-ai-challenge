@@ -1,3 +1,5 @@
+import SellerDetail from "./SellerDetail.jsx";
+
 function ActionPanel({ product }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -31,10 +33,7 @@ function ActionPanel({ product }) {
         </button>
       </div>
 
-      <div style={{ border: "1px solid #eee", padding: "1rem", borderRadius: "6px" }}>
-        <h3 style={{ marginTop: 0 }}>Vendedor</h3>
-        <p>{product.seller || "Información no disponible"}</p>
-      </div>
+      <SellerDetail sellerId={product.sellerId}/>
 
       <div style={{ border: "1px solid #eee", padding: "1rem", borderRadius: "6px" }}>
         <h3 style={{ marginTop: 0 }}>Medios de pago</h3>

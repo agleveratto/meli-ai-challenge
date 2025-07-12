@@ -4,7 +4,7 @@
     "title": "Samsung Galaxy A55",
     "description": "Samsung Galaxy A55 12/256 Gb 5G",
     "brand": "Samsung",
-    "seller": "Samsung Store",
+    "sellerId": "MLAS1231",
     "category": "Cellphones",
     "price": 439.00,
     "images": [
@@ -17,7 +17,7 @@
     "title": "Samsung Galaxy A56",
     "description": "Samsung Galaxy A56 12/256 Gb 5G",
     "brand": "Samsung",
-    "seller": "Samsung Store",
+    "sellerId": "MLAS1231",
     "category": "Cellphones",
     "price": 499.00,
     "images": [

@@ -1,4 +1,4 @@
-package com.agl.meli.product.exceptions;
+package com.agl.meli.seller.exceptions;
 
 import com.agl.meli.common.exceptions.JsonFileNotFoundException;
 import com.agl.meli.common.exceptions.JsonFileParseException;
@@ -12,8 +12,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ApiResponse<Void>> handleProductNotFoundException(ProductNotFoundException ex) {
+    @ExceptionHandler(SellerNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleSellerNotFoundException(SellerNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponse.error(ex.getMessage()));
     }
 
