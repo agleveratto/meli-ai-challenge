@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThumbnailGallery from "./ThumbnailGallery.jsx";
 import MainImage from "./MainImage.jsx";
@@ -6,7 +6,6 @@ import ProductInfo from "./ProductInfo.jsx";
 
 function ProductDetail() {
   const { id } = useParams();
-  // const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -1,9 +1,6 @@
-import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function SellerDetail() {
-  const { sellerId } = useParams();
-  // const navigate = useNavigate();
+function SellerDetail( {sellerId} ) {
   const [seller, setSeller] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,7 +24,25 @@ function SellerDetail() {
   return (    
     <div style={{ border: "1px solid #eee", padding: "1rem", borderRadius: "6px" }}>
     <h3 style={{ marginTop: 0 }}></h3>
-    <p>{seller.id || "Información no disponible"}</p>
+    {seller.logoUrl && (
+        <img
+          src={seller.logoUrl}
+          alt={`Logo de ${seller.name}`}
+          style={{
+            width: "80px",
+            height: "80px",
+            objectFit: "contain",
+            borderRadius: "6px",
+            marginBottom: "1rem"
+          }}
+        />
+      )}
+    <p>{seller.name || "Información no disponible"}</p>
+    <button 
+      onClick={() => window.open(seller.website, "_blank")}
+      disabled={!seller.website}>
+      Visitar sitio del vendedor
+    </button>
   </div>
   );
 }

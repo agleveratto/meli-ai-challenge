@@ -1,4 +1,4 @@
-import SellerDetail from "./SellerDetail";
+import SellerDetail from "./SellerDetail.jsx";
 
 function ActionPanel({ product }) {
   return (
@@ -33,7 +33,7 @@ function ActionPanel({ product }) {
         </button>
       </div>
 
-      <SellerDetail seller={product.sellerId} />
+      <SellerDetail sellerId={product.sellerId}/>
 
       <div style={{ border: "1px solid #eee", padding: "1rem", borderRadius: "6px" }}>
         <h3 style={{ marginTop: 0 }}>Medios de pago</h3>
