@@ -49,7 +49,7 @@ class ProductControllerTest {
     void findAll_givenFileWithData_shouldReturnGenericResponseWithData() throws Exception {
         final String knownId = "MLA123";
 
-        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList());
+        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList(),10);
 
         when(productService.findAll()).thenReturn(List.of(expectedProduct));
 
@@ -110,7 +110,7 @@ class ProductControllerTest {
     void findById_givenKnownId_shouldReturnGenericResponseWithData() throws Exception {
         final String knownId = "MLA123";
 
-        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList());
+        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList(),10);
 
         when(productService.findById(knownId))
                 .thenReturn(expectedProduct);

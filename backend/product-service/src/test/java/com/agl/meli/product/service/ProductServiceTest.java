@@ -35,7 +35,7 @@ class ProductServiceTest {
 
     @Test
     void findAll_givenFileWithData_shouldReturnListOfProducts() {
-        final Product expectedProduct = new Product("MLA123","","","","","",439.00, Collections.emptyList());
+        final Product expectedProduct = new Product("MLA123","","","","","",439.00, Collections.emptyList(),10);
         when(productRepository.findAll()).thenReturn(Collections.singletonList(expectedProduct));
         assertThat(productService.findAll()).containsExactly(expectedProduct);
         verify(productRepository).findAll();
@@ -57,7 +57,7 @@ class ProductServiceTest {
     void findById_givenKnownId_shouldReturnProduct() {
         final String knownId = "MLA123";
 
-        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList());
+        final Product expectedProduct = new Product(knownId,"","","","","",439.00, Collections.emptyList(),10);
 
         when(productRepository.findById(knownId)).thenReturn(Optional.of(expectedProduct));
 

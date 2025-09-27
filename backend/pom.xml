@@ -14,6 +14,7 @@
         <module>common</module>
         <module>product-service</module>
         <module>seller-service</module>
+        <module>filter-engine</module>
     </modules>
 
     <dependencyManagement>
