@@ -1,21 +1,7 @@
 package com.agl.meli.product.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Collection;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Product {
-    private String id;
-    private String title;
-    private String description;
-    private String brand;
-    private String sellerId;
-    private String category;
-    private double price;
-    private Collection<String> images;
+public record Product(String id, String title, String description, String brand, String sellerId, String category,
+                      double price, Collection < String > images) {
 }

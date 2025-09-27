@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class StartupIntegrationTest {
+class ProductServiceApplicationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -27,7 +27,7 @@ class StartupIntegrationTest {
 
     @Test
     void healthEndpointShouldReturnOk() {
-        ResponseEntity <String> response = restTemplate.getForEntity("/api/v1/sellers", String.class);
+        ResponseEntity <String> response = restTemplate.getForEntity("/api/v1/products", String.class);
         assertEquals( HttpStatus.OK, response.getStatusCode());
     }
 }
