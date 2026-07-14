@@ -1,22 +1,36 @@
 import { useEffect, useState } from "react";
 import { sellerApi } from "../services/api.js";
+import { EmptyState, ErrorState, LoadingState } from "./FeedbackState.jsx";
 
 function SellerDetail( {sellerId} ) {
-  const [seller, setSeller] = useState({});
+  const [seller, setSeller] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reloadAttempt, setReloadAttempt] = useState(0);
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+    setSeller(null);
+
+    if (!sellerId) {
+      setLoading(false);
+      return;
+    }
+
     sellerApi.findById(sellerId)
       .then((res) => {
-        setSeller(res.data || {});
+        setSeller(res.data || null);
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [sellerId]);
+  }, [sellerId, reloadAttempt]);
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error: {error}</h1>;
+  if (loading) return <LoadingState label="Cargando vendedor..." compact />;
+  if (error) return <ErrorState message={error} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} compact />;
+  if (!seller?.id) {
+    return <EmptyState title="Vendedor no disponible" description="No hay datos para mostrar." compact />;
+  }
 
   return (    
     <div style={{ border: "1px solid #eee", padding: "1rem", borderRadius: "6px" }}>

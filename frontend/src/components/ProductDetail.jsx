@@ -4,6 +4,7 @@ import ThumbnailGallery from "./ThumbnailGallery.jsx";
 import MainImage from "./MainImage.jsx";
 import ProductInfo from "./ProductInfo.jsx";
 import { productApi } from "../services/api.js";
+import { EmptyState, ErrorState, LoadingState } from "./FeedbackState.jsx";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -11,18 +12,26 @@ function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [reloadAttempt, setReloadAttempt] = useState(0);
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+    setProduct(null);
+    setSelectedImage(null);
     productApi.findById(id)
       .then((res) => {
-        setProduct(res.data || {});
+        setProduct(res.data || null);
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [id]);
+  }, [id, reloadAttempt]);
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error: {error}</h1>;
+  if (loading) return <LoadingState label="Cargando producto..." />;
+  if (error) return <ErrorState message={error} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} />;
+  if (!product?.id) {
+    return <EmptyState title="Producto no disponible" description="El producto solicitado no contiene información para mostrar." />;
+  }
 
   return (
     <div className="meli-detail-page" style={{ padding: "2rem", maxWidth: "1200px", margin: "auto", display: "flex", gap: "2rem" }}>
