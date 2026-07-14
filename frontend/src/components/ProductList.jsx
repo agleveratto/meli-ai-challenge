@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { productApi } from "../services/api.js";
 
 function ProductList() {
     const [products, setProducts] = useState([]);
@@ -8,11 +9,7 @@ function ProductList() {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:8081/api/v1/products')
-            .then((res) => {
-                if (!res.ok) throw new Error('Error al obtener productos');
-                return res.json();
-            })
+        productApi.findAll()
             .then((res) => {
                 setProducts(res.data || []);
                 setLoading(false);

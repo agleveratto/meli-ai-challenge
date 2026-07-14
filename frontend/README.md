@@ -19,3 +19,13 @@ Verificá que estén instalados:
     node -v
     npm -v
 ```
+
+## Configuración de API
+
+Vite carga automáticamente los archivos de entorno según el comando:
+
+- `.env.development`: se usa con `npm run dev` y configura los servicios locales.
+- `.env.production`: se usa con `npm run build`; reemplazá `VITE_API_URL` por la URL real del gateway al desplegar.
+- `.env.test`: se usa al ejecutar Vite con `--mode test`.
+
+Se puede configurar una URL común de gateway con `VITE_API_URL`, o URLs por servicio con `VITE_PRODUCT_API_URL` y `VITE_SELLER_API_URL`. Para valores personales o secretos usá `.env.local` o `.env.[modo].local`; esos archivos no se versionan.

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ThumbnailGallery from "./ThumbnailGallery.jsx";
 import MainImage from "./MainImage.jsx";
 import ProductInfo from "./ProductInfo.jsx";
+import { productApi } from "../services/api.js";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -12,11 +13,7 @@ function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8081/api/v1/products/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Producto no encontrado");
-        return res.json();
-      })
+    productApi.findById(id)
       .then((res) => {
         setProduct(res.data || {});
       })

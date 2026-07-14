@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { sellerApi } from "../services/api.js";
 
 function SellerDetail( {sellerId} ) {
   const [seller, setSeller] = useState({});
@@ -6,11 +7,7 @@ function SellerDetail( {sellerId} ) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8082/api/v1/sellers/${sellerId}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Vendedor no encontrado");
-        return res.json();
-      })
+    sellerApi.findById(sellerId)
       .then((res) => {
         setSeller(res.data || {});
       })
