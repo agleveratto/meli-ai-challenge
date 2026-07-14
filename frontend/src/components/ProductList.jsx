@@ -46,7 +46,7 @@ function ProductList() {
               }}
             >
               <img
-                src={product.images || "https://via.placeholder.com/100"}
+                src={product.images?.[0] || "https://via.placeholder.com/100"}
                 alt={product.title}
                 style={{ width: "100px", height: "100px", objectFit: "contain", backgroundColor: "#f5f5f5", flexShrink: 0 }}
               />
